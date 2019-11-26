@@ -1,0 +1,103 @@
+.wishCard {
+    position: relative;
+    display: flex;            
+    border-radius: 12px;
+    box-shadow: 0 0 5px 1px #0000001a;
+    height: 100%;
+    overflow: hidden;
+    padding: 8px;
+}
+
+.granted {
+    position: absolute;
+    background: var(--colorComplementary) ;
+    border: 2px solid var(--colorSecondary_dark);
+    padding: 8px;
+    transform: translate(-48px, 8px) rotate(-45deg);
+    width: 120px;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+}
+
+.wishImage {
+    background-size: cover;
+    background-position: center center;
+    border-radius: 8px 0 0 8px;
+    height: 100%;
+    margin-right: 8px;
+    min-width: 50%;
+    width: 50%;
+}
+
+.wishInfo {
+    flex: 1 1 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr auto;
+}
+
+.info {
+    flex: 1 1 auto;
+}
+
+.category {
+    display: block;
+    color: #888;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    margin: 4px 0;
+    text-transform: uppercase;
+}
+
+.wishTitle {
+    color: var(--colorPrimary_dark);
+    font-family: 'Averia Serif Libre', cursive;
+    font-weight: 400;
+    font-size: 1.75em;
+    line-height: 1.1em;
+    margin: 16px 0 8px;
+    text-transform: capitalize;
+}
+
+.description {
+    position: relative;
+    display: block;
+    color: #666;
+    font-size: 14px;
+    height: 48px;
+    line-height: 1.25em;
+    margin: 8px 0;
+    overflow: hidden;
+}
+
+.description__veil {
+    position: absolute;
+    bottom: 0;
+    background: linear-gradient(transparent, white);
+    height: 20px;
+    width: 100%;
+}
+
+.actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-left: 12px;
+}
+
+.actions__notGranted {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    gap: 8px;
+}
+
+    .gratitude {
+    grid-column: 1 / span 2;
+    align-items: center;
+    background: var(--colorComplementary);
+    padding: 8px 8px;
+    border-radius: 0 0 8px 0;
+}

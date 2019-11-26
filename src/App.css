@@ -1,22 +1,38 @@
-.App {
-  text-align: center;
+:root {
+  --colorPrimary_dark: teal;
+  --colorPrimary_light: cadetblue;
+  --colorSecondary_dark: indianred;
+  --colorSecondary_light: salmon;
+  --colorComplementary: antiquewhite;
+
+  --transition-speed: 300ms;
 }
 
-.App-logo {
-  height: 40vmin;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.header {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  box-shadow: 0 0 8px 1px rgba(0,0,0,0.12);;
+  height: 70px;
+  padding: 0 5%;
 }
 
-.App-link {
-  color: #09d3ac;
+.header__projectName{
+  flex: 1 0 auto;
+  text-align: center;
+  font-family: 'Averia Serif Libre', cursive;
+  font-size: 3em;
+}
+
+.header__button {
+  width: 125px;
+}
+
+.loginFrom {
+  display: grid;
+  grid-gap: 24px;
+  margin: 140px auto;
+  max-width: 450px;
+  min-width: 300px;
+  width: 90%;
 }

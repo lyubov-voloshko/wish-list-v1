@@ -1,0 +1,15 @@
+.wishList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 12px 32px;
+    box-sizing: border-box;
+    list-style: none;
+    margin-top: 12px;
+    padding: 0 5%;
+    width: 100%;
+}
+
+.wishList__item {
+    padding: 20px 0;
+    height: 220px;
+}

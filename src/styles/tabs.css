@@ -1,0 +1,22 @@
+.tabs {
+    box-sizing: border-box;
+    list-style: none;
+    margin-top: 32px;
+    padding: 0 5%;
+    width: 100%;
+}
+
+.tab {
+    display: inline-block;
+}
+
+.tabLink {
+    border-bottom: 2px solid transparent;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 10px 20px;
+}
+
+.tabLink_active {
+    border-bottom: 2px solid cornflowerblue;
+}
