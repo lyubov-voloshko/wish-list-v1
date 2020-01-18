@@ -3,12 +3,19 @@ import '../styles/wish-card.css';
 import Button from '../components/ui-components/button';
 import { Link } from 'react-router-dom'
 import React from 'react';
+import { connect } from 'react-redux';
+import { deleteWish } from '../store/actions/wish-list';
 
-const WishCard = ({ wish, isAuth }) => {
+const mapDispatchToProps = {
+    deleteWish
+}
+
+
+const WishCard = ({ id, wish, isAuth, deleteWish }) => {
     return (
         <div className="wishCard">
             <div id="grantedMark" className="granted">granted</div>
-            <div class="wishImage" role="img" style={{ backgroundImage: `url(${wish.imageURL})` }}></div>
+            <div className="wishImage" role="img" style={{ backgroundImage: `url(${wish.imageURL})` }}></div>
             <div className="wishInfo">
                 <div className="info">
                     <span className="category">{wish.category}</span>
@@ -26,7 +33,7 @@ const WishCard = ({ wish, isAuth }) => {
                                 //onClick={() => showEditWishForm(wisth.id)}
                             />
                         </div>
-                        <Button type="button" appearance="secondary" caption="remove"/>
+                        <Button type="button" appearance="secondary" caption="remove" onClick={() => deleteWish(id)}/>
                     </div> : null
                 }
                 <div id="gratitude" className="gratitude">
@@ -40,4 +47,4 @@ const WishCard = ({ wish, isAuth }) => {
     )
 }
 
-export default WishCard;
+export default connect(null, mapDispatchToProps)(WishCard);

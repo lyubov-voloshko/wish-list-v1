@@ -1,3 +1,5 @@
+import '../styles/add-wish.css';
+
 import React, { Component } from 'react';
 
 import Button from './ui-components/button';
@@ -30,7 +32,7 @@ class AddWish extends Component {
     }
     render() {
         return (
-            <form className="loginFrom" onSubmit={this.handleSubmit}>
+            <form className="addWishFrom" onSubmit={this.handleSubmit}>
                 <TextBox label="Title" id="title" value={this.state.title} onChange={this.getValue}/>
                 <select id="category" value={this.state.category} onChange={this.getValue}>
                     <option value="book">book</option>

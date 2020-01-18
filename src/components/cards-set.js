@@ -19,12 +19,11 @@ class CardsSet extends Component {
         const  { wishes, isAuth } = this.props;
         return (
             <ul className="wishList">
-                { wishes && Object.values(wishes).map( wish => {
-                    return <li className="wishList__item">
-                        <WishCard wish={wish} isAuth={isAuth} />
+                { wishes && Object.entries(wishes).map( ([key, wish]) => {
+                    if (wish) return <li className="wishList__item" key={key}>
+                        <WishCard id={key} wish={wish} isAuth={isAuth} />
                     </li>
                 })}
-                
             </ul>
         )
     }
