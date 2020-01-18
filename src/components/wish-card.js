@@ -4,7 +4,7 @@ import Button from '../components/ui-components/button';
 import { Link } from 'react-router-dom'
 import React from 'react';
 
-const WishCard = ({ wish }) => {
+const WishCard = ({ wish, isAuth }) => {
     return (
         <div className="wishCard">
             <div id="grantedMark" className="granted">granted</div>
@@ -18,13 +18,17 @@ const WishCard = ({ wish }) => {
                         <div className="description__veil"></div>
                     </div>
                 </div>
-                <div id="controls" className="actions">
-                    <div id="actions__notGranted" className="actions__notGranted">
-                        <Button type="button" appearance="primary" caption="grant" />
-                        <Button type="button" appearance="secondary" caption="edit"/>
-                    </div>
-                    <Button type="button" appearance="secondary" caption="remove"/>
-                </div>
+                { isAuth ?  
+                    <div id="controls" className="actions">
+                        <div id="actions__notGranted" className="actions__notGranted">
+                            <Button type="button" appearance="primary" caption="grant" />
+                            <Button type="button" appearance="secondary" caption="edit" 
+                                //onClick={() => showEditWishForm(wisth.id)}
+                            />
+                        </div>
+                        <Button type="button" appearance="secondary" caption="remove"/>
+                    </div> : null
+                }
                 <div id="gratitude" className="gratitude">
                     The wish was granted 
                     <slot name="grantHelper"></slot>
