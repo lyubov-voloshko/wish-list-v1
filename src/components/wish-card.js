@@ -13,7 +13,7 @@ const mapDispatchToProps = {
 const WishCard = ({ id, wish, isAuth, wishToDelete, openDeleteConfirmation }) => {
     return (
         <div className="wishCard">
-            <div id="grantedMark" className="granted">granted</div>
+            {wish.isGranted ? <div id="grantedMark" className="granted">granted</div> : null}
             <div className="wishImage" role="img" style={{ backgroundImage: `url(${wish.imageURL})` }}></div>
             <div className="wishInfo">
                 <div className="info">
@@ -26,22 +26,25 @@ const WishCard = ({ id, wish, isAuth, wishToDelete, openDeleteConfirmation }) =>
                 </div>
                 { isAuth ?  
                     <div id="controls" className="actions">
-                        <div id="actions__notGranted" className="actions__notGranted">
+                        {wish.isGranted ? null :
+                            <div className="actions__notGranted">
                             <Button type="button" appearance="primary" caption="grant" />
                             <Button type="button" appearance="secondary" caption="edit" 
                                 //onClick={() => showEditWishForm(wisth.id)}
                             />
-                        </div>
+                        </div>}
                         {/*<Button type="button" appearance="secondary" caption="remove" onClick={() => deleteWish(id)}/>*/}
                         <Button type="button" appearance="secondary" caption="remove" onClick={() => openDeleteConfirmation(id)}/>
                     </div> : null
                 }
-                <div id="gratitude" className="gratitude">
-                    The wish was granted 
-                    <slot name="grantHelper"></slot>
-                    <slot name="grantPerson"></slot>
-                    <slot name="grantDate"></slot>
-                </div>
+                {wish.isGranted ? 
+                    <div className="gratitude">
+                        The wish was granted 
+                        <slot name="grantHelper"></slot>
+                        <slot name="grantPerson"></slot>
+                        <slot name="grantDate"></slot>
+                    </div> :null
+                }
             </div>
         </div>
     )

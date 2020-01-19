@@ -1,6 +1,5 @@
 .button {
     border-radius: 4px;
-    height: 36px;
     font-size: 14px;
     text-transform: uppercase;
     padding: 0 20px;
@@ -10,6 +9,7 @@
     background: var(--colorSecondary_dark);
     border: 1px solid var(--colorSecondary_dark);
     color: white;
+    height: 36px;
     transition: background var(--transition-speed), 
                 border var(--transition-speed),
                 color var(--transition-speed);
