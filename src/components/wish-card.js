@@ -1,6 +1,6 @@
 import '../styles/wish-card.css';
 
-import { openDeleteConfirmation, openEditDialog } from '../store/actions/wish-list';
+import { openDeleteConfirmation, openEditDialog, openGrantDialog } from '../store/actions/wish-list';
 
 import Button from '../components/ui-components/button';
 import { Link } from 'react-router-dom'
@@ -9,10 +9,11 @@ import { connect } from 'react-redux';
 
 const mapDispatchToProps = {
     openDeleteConfirmation,
-    openEditDialog
+    openEditDialog,
+    openGrantDialog
 }
 
-const WishCard = ({ id, wish, isAuth, openDeleteConfirmation, openEditDialog }) => {
+const WishCard = ({ id, wish, isAuth, openDeleteConfirmation, openEditDialog, openGrantDialog }) => {
     return (
         <div className="wishCard">
             {wish.isGranted ? <div id="grantedMark" className="granted">granted</div> : null}
@@ -30,10 +31,8 @@ const WishCard = ({ id, wish, isAuth, openDeleteConfirmation, openEditDialog }) 
                     <div id="controls" className="actions">
                         {wish.isGranted ? null :
                             <div className="actions__notGranted">
-                            <Button type="button" appearance="primary" caption="grant" />
-                            <Button type="button" appearance="secondary" caption="edit" 
-                                onClick={() => openEditDialog(id)}
-                            />
+                            <Button type="button" appearance="primary" caption="grant" onClick={() => openGrantDialog(id)}/>
+                            <Button type="button" appearance="secondary" caption="edit" onClick={() => openEditDialog(id)} />
                         </div>}
                         <Button type="button" appearance="secondary" caption="remove" onClick={() => openDeleteConfirmation(id)}/>
                     </div> : null
@@ -41,8 +40,8 @@ const WishCard = ({ id, wish, isAuth, openDeleteConfirmation, openEditDialog }) 
                 {wish.isGranted ? 
                     <div className="gratitude">
                         The wish was granted 
-                        {wish.grantDate ? <span> on {wish.grantDate}</span> : null}
                         {wish.grantPerson ? <span> {wish.grantHelper} {wish.grantPerson}</span> : null}
+                        {wish.grantDate ? <span> on {wish.grantDate}</span> : null}
                     </div> : null    
                 }
             </div>

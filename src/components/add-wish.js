@@ -18,9 +18,10 @@ class AddWish extends Component {
         description: '',
         imageURL: ''
     }
+    
     getValue = (e) => {
         this.setState({
-            [e.target.id]: e.target.value
+            [e.target.name]: e.target.value
         })
     }
     

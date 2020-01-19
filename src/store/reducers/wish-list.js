@@ -1,6 +1,7 @@
 const initState = {
     wishToDeleteId: null,
-    wishToEditId: null
+    wishToEditId: null,
+    wishToGrantId: null
 }
 
 const wishListReducer = (state = initState, action) => {
@@ -16,15 +17,25 @@ const wishListReducer = (state = initState, action) => {
                     wishToDeleteId: null
                 }
         case 'WISH_EDIT_OPEN':
-                return {
-                    ...state,
-                    wishToEditId: action.id
-                }
+            return {
+                ...state,
+                wishToEditId: action.id
+            }
         case 'WISH_EDIT_CLOSE':
-                return {
-                    ...state,
-                    wishToEditId: null
-                }
+            return {
+                ...state,
+                wishToEditId: null
+            }
+        case 'WISH_GRANT_OPEN':
+            return {
+                ...state,
+                wishToGrantId: action.id
+            }
+        case 'WISH_GRANT_CLOSE':
+            return {
+                ...state,
+                wishToGrantId: null
+            }
     }
     return state;
 }

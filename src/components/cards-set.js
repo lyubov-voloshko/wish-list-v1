@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 
 import DeleteWishConfirmation from './dialog-deleteWish';
 import EditWish from './dialog-editWish';
+import GrantWish from './dialog-grantWish';
 import WishCard from './wish-card';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
@@ -30,6 +31,7 @@ class CardsSet extends Component {
                     })}
                 </ul>
 
+                <GrantWish />
                 <EditWish />
                 <DeleteWishConfirmation />
             </React.Fragment>

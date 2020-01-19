@@ -53,13 +53,40 @@ export const closeEditDialog = () => {
 }
 
 export const editWish = (id, wish) => {
-    console.log(id);
-    console.log(wish);
     return (dispatch, getState) => {
         store.firestore
             .update({collection: 'wishes', doc: id}, wish)
             .then(() => {
                 dispatch({ type: 'WISH_EDIT_CLOSE' })
+            })
+            .catch((error) => {
+                console.log(error.message);
+                dispatch({ type: 'GENERAL_ERROR', error })                                
+            });
+    }
+}
+
+export const openGrantDialog = (id) => {
+    return (dispatch) => {
+        dispatch({ type: 'WISH_GRANT_OPEN', id })
+    }
+}
+
+export const closeGrantDialog = () => {
+    return (dispatch) => {
+        dispatch({ type: 'WISH_GRANT_CLOSE' })
+    }
+}
+
+export const grantWish = (id, wish) => {
+    console.log(id);
+    console.log(wish);
+    const grantingWish = {...wish, isGranted: true}
+    return (dispatch, getState) => {
+        store.firestore
+            .update({collection: 'wishes', doc: id}, grantingWish)
+            .then(() => {
+                dispatch({ type: 'WISH_GRANT_CLOSE' })
             })
             .catch((error) => {
                 console.log(error.message);
