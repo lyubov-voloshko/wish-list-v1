@@ -40,10 +40,9 @@ const WishCard = ({ id, wish, isAuth, wishToDelete, openDeleteConfirmation }) =>
                 {wish.isGranted ? 
                     <div className="gratitude">
                         The wish was granted 
-                        <slot name="grantHelper"></slot>
-                        <slot name="grantPerson"></slot>
-                        <slot name="grantDate"></slot>
-                    </div> :null
+                        {wish.grantDate ? <span> on {wish.grantDate}</span> : null}
+                        {wish.grantPerson ? <span> {wish.grantHelper} {wish.grantPerson}</span> : null}
+                    </div> : null    
                 }
             </div>
         </div>
