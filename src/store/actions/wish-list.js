@@ -28,12 +28,38 @@ export const closeDeleteConfirmation = () => {
 
 export const deleteWish = (id) => {
     return (dispatch, getState) => {
-        //const firestore = getFirestore();
-        console.log(id);
         store.firestore
             .delete({collection: 'wishes', doc: id})
             .then(() => {
                 dispatch({ type: 'WISH_CONFIRM_DELETED_CLOSE' })
+            })
+            .catch((error) => {
+                console.log(error.message);
+                dispatch({ type: 'GENERAL_ERROR', error })                                
+            });
+    }
+}
+
+export const openEditDialog = (id) => {
+    return (dispatch) => {
+        dispatch({ type: 'WISH_EDIT_OPEN', id })
+    }
+}
+
+export const closeEditDialog = () => {
+    return (dispatch) => {
+        dispatch({ type: 'WISH_EDIT_CLOSE' })
+    }
+}
+
+export const editWish = (id, wish) => {
+    console.log(id);
+    console.log(wish);
+    return (dispatch, getState) => {
+        store.firestore
+            .update({collection: 'wishes', doc: id}, wish)
+            .then(() => {
+                dispatch({ type: 'WISH_EDIT_CLOSE' })
             })
             .catch((error) => {
                 console.log(error.message);

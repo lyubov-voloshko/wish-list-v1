@@ -1,15 +1,10 @@
 import '../../styles/ui-components/dialog.css';
 
-import React, { Component } from 'react';
-
-import Button from './button';
-import { Redirect } from 'react-router-dom';
-import TextBox from './text-box';
-import { connect } from 'react-redux';
+import React from 'react';
 
 export const DialogHeader = ({ children }) => {
     return (
-        <div class="dialogHeader">
+        <div className="dialogHeader">
             {children}
         </div>
     )
@@ -17,7 +12,7 @@ export const DialogHeader = ({ children }) => {
 
 export const DialogContent = ({ children }) => {
     return (
-        <div class="dialogContent">
+        <div className="dialogContent">
             {children}
         </div>
     )
@@ -25,7 +20,7 @@ export const DialogContent = ({ children }) => {
 
 export const DialogActions = ({ children }) => {
     return (
-        <div class="dialogActions">
+        <div className="dialogActions">
             {children}
         </div>
     )
@@ -33,9 +28,9 @@ export const DialogActions = ({ children }) => {
 
 export const DialogScreen = ({ children, open, onClose }) => {
     return (
-        <div class="dialogScreen">
-            <div class="dialogScreen__veil" onClick={() => onClose()}></div>
-            <div class="dialogWindow">
+        <div className="dialogScreen">
+            <div className="dialogScreen__veil" onClick={() => onClose()}></div>
+            <div className="dialogWindow">
                 { children }
             </div>
         </div>

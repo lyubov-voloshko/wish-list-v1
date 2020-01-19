@@ -8,10 +8,7 @@ import React, { Component } from 'react';
 import { closeDeleteConfirmation, deleteWish } from '../store/actions/wish-list';
 
 import Button from './ui-components/button';
-import { Redirect } from 'react-router-dom';
-import TextBox from './ui-components/text-box';
 import { connect } from 'react-redux';
-import { signIn } from '../store/actions/auth';
 
 const mapStateToProps = (state) => {
     return {
@@ -26,21 +23,6 @@ const mapDispatchToProps = {
 }
 
 class DeleteWishConfirmation extends Component {
-    state = {
-        email: '',
-        password: ''
-    }
-    getValue = (e) => {
-        this.setState({
-            [e.target.id]: e.target.value
-        })
-    }
-    
-    handleSubmit = (e) => {
-        e.preventDefault();
-        console.log(this.props);
-        this.props.signIn(this.state);
-    }
     render() {
         const  { wishToDeleteId, wishToDelete, closeDeleteConfirmation, deleteWish } = this.props;
         if (wishToDelete) return (

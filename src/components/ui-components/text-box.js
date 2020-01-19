@@ -6,7 +6,13 @@ class TextBox extends Component {
     render() {
         return (
             <div className="textBox">
-                <input type={this.props.type} id={this.props.id} className="textField" placeholder="Enter" value={this.props.value} onChange={this.props.onChange}/>
+                <input id={this.props.id} 
+                    type={this.props.type}
+                    className="textField"
+                    placeholder="Enter" 
+                    name={this.props.name}
+                    value={this.props.value} 
+                    onChange={this.props.onChange}/>
                 <label htmlFor={this.props.id} className="textFieldLabel">{this.props.label}</label>
             </div>
         )

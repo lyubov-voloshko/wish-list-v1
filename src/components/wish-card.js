@@ -1,16 +1,18 @@
 import '../styles/wish-card.css';
 
+import { openDeleteConfirmation, openEditDialog } from '../store/actions/wish-list';
+
 import Button from '../components/ui-components/button';
 import { Link } from 'react-router-dom'
 import React from 'react';
 import { connect } from 'react-redux';
-import { openDeleteConfirmation } from '../store/actions/wish-list';
 
 const mapDispatchToProps = {
-    openDeleteConfirmation
+    openDeleteConfirmation,
+    openEditDialog
 }
 
-const WishCard = ({ id, wish, isAuth, wishToDelete, openDeleteConfirmation }) => {
+const WishCard = ({ id, wish, isAuth, openDeleteConfirmation, openEditDialog }) => {
     return (
         <div className="wishCard">
             {wish.isGranted ? <div id="grantedMark" className="granted">granted</div> : null}
@@ -30,10 +32,9 @@ const WishCard = ({ id, wish, isAuth, wishToDelete, openDeleteConfirmation }) =>
                             <div className="actions__notGranted">
                             <Button type="button" appearance="primary" caption="grant" />
                             <Button type="button" appearance="secondary" caption="edit" 
-                                //onClick={() => showEditWishForm(wisth.id)}
+                                onClick={() => openEditDialog(id)}
                             />
                         </div>}
-                        {/*<Button type="button" appearance="secondary" caption="remove" onClick={() => deleteWish(id)}/>*/}
                         <Button type="button" appearance="secondary" caption="remove" onClick={() => openDeleteConfirmation(id)}/>
                     </div> : null
                 }

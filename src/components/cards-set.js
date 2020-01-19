@@ -3,10 +3,11 @@ import '../styles/cards-set.css';
 import React, { Component } from 'react';
 
 import DeleteWishConfirmation from './dialog-deleteWish';
+import EditWish from './dialog-editWish';
 import WishCard from './wish-card';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
-import { firestoreConnect } from 'react-redux-firebase'
+import { firestoreConnect } from 'react-redux-firebase';
 
 const mapStateToProps = (state) => {
     return {
@@ -24,10 +25,12 @@ class CardsSet extends Component {
                     { wishes && Object.entries(wishes).map( ([key, wish]) => {
                         if (wish) return <li className="wishList__item" key={key}>
                             <WishCard id={key} wish={wish} isAuth={isAuth} />
+
                         </li>
                     })}
                 </ul>
 
+                <EditWish />
                 <DeleteWishConfirmation />
             </React.Fragment>
 
