@@ -4,14 +4,13 @@ import Button from '../components/ui-components/button';
 import { Link } from 'react-router-dom'
 import React from 'react';
 import { connect } from 'react-redux';
-import { deleteWish } from '../store/actions/wish-list';
+import { openDeleteConfirmation } from '../store/actions/wish-list';
 
 const mapDispatchToProps = {
-    deleteWish
+    openDeleteConfirmation
 }
 
-
-const WishCard = ({ id, wish, isAuth, deleteWish }) => {
+const WishCard = ({ id, wish, isAuth, wishToDelete, openDeleteConfirmation }) => {
     return (
         <div className="wishCard">
             <div id="grantedMark" className="granted">granted</div>
@@ -33,7 +32,8 @@ const WishCard = ({ id, wish, isAuth, deleteWish }) => {
                                 //onClick={() => showEditWishForm(wisth.id)}
                             />
                         </div>
-                        <Button type="button" appearance="secondary" caption="remove" onClick={() => deleteWish(id)}/>
+                        {/*<Button type="button" appearance="secondary" caption="remove" onClick={() => deleteWish(id)}/>*/}
+                        <Button type="button" appearance="secondary" caption="remove" onClick={() => openDeleteConfirmation(id)}/>
                     </div> : null
                 }
                 <div id="gratitude" className="gratitude">

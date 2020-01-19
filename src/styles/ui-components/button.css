@@ -37,6 +37,18 @@
     text-shadow: 0.5px 0 0 #333;
 }
 
+.button_outlined {
+    background: transparent;
+    border: 1px solid var(--colorSecondary_dark);
+    color: var(--colorSecondary_dark);
+}
+
+.button_outlined:hover {
+    background: transparent;
+    color: var(--colorSecondary_light);
+    border: 1px solid var(--colorSecondary_light);
+}
+
 .caption {
     text-transform: uppercase;
 }

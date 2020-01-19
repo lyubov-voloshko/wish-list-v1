@@ -1,0 +1,32 @@
+.dialogScreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+.dialogScreen__veil {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: black;
+    opacity: 0.5;
+    height: 100vh;
+    width: 100vw;
+}
+
+.dialogWindow {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border-radius: 8px;
+    padding: 20px 24px;
+    width: 420px;
+}
+
+.dialogHeader {
+    margin-bottom: 36px;
+}

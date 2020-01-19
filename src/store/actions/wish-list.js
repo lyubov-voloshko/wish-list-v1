@@ -14,6 +14,18 @@ export const createWish = (wish) => {
     }
 }
 
+export const openDeleteConfirmation = (id) => {
+    return (dispatch) => {
+        dispatch({ type: 'WISH_CONFIRM_DELETED_OPEN', id })
+    }
+}
+
+export const closeDeleteConfirmation = () => {
+    return (dispatch) => {
+        dispatch({ type: 'WISH_CONFIRM_DELETED_CLOSE' })
+    }
+}
+
 export const deleteWish = (id) => {
     return (dispatch, getState) => {
         //const firestore = getFirestore();
@@ -21,7 +33,7 @@ export const deleteWish = (id) => {
         store.firestore
             .delete({collection: 'wishes', doc: id})
             .then(() => {
-                dispatch({ type: 'WISH_DELETED' })                
+                dispatch({ type: 'WISH_CONFIRM_DELETED_CLOSE' })
             })
             .catch((error) => {
                 console.log(error.message);

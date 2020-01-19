@@ -1,24 +1,19 @@
 const initState = {
-    wishes: [
-        {
-            title: 'my wish 1',
-            category: 'book',
-            description: 'Some description',
-            imageURL: 'https://test.com/someimage1'
-        },
-        {
-            title: 'my wish 2',
-            category: 'item',
-            description: 'Some description',
-            imageURL: 'https://test.com/someimage2'
-        }
-    ]
+    wishToDeleteId: null
 }
 
 const wishListReducer = (state = initState, action) => {
     switch(action.type) {
-        case 'WISH_ADD':
-            
+        case 'WISH_CONFIRM_DELETED_OPEN':
+            return {
+                ...state,
+                wishToDeleteId: action.id
+            }
+        case 'WISH_CONFIRM_DELETED_CLOSE':
+                return {
+                    ...state,
+                    wishToDeleteId: null
+                }
     }
     return state;
 }
