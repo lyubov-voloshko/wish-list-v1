@@ -43,8 +43,8 @@ class GrantWish extends Component {
         this.props.grantWish(this.props.wishToGrantId, this.state);
     }
     render() {
-        const  { wishToGrantId, wishToGrant, closeGrantDialog } = this.props;
-        if (wishToGrant) return (
+        const  { wishToGrant, closeGrantDialog } = this.props;
+        return (
             <DialogScreen onClose={() => closeGrantDialog()}>
                 <DialogHeader>
                     <div class="illustration">
@@ -58,7 +58,7 @@ class GrantWish extends Component {
                 </DialogHeader>
                 <form onSubmit={this.handleSubmit}>
                     <DialogContent>
-                        <p>It was granted</p>
+                        <p>Your wish "{wishToGrant.title}" was granted</p>
                         <select id="grantHelper">
                             <option value="me">by me</option>
                             <option value="by">by</option>
@@ -76,7 +76,6 @@ class GrantWish extends Component {
                 </form>
             </DialogScreen>
         );
-        return null
     }
 }
 

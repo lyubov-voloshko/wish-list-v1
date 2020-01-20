@@ -25,10 +25,10 @@ const mapDispatchToProps = {
 class DeleteWishConfirmation extends Component {
     render() {
         const  { wishToDeleteId, wishToDelete, closeDeleteConfirmation, deleteWish } = this.props;
-        if (wishToDelete) return (
+        return (
             <DialogScreen onClose={() => closeDeleteConfirmation()}>
                 <DialogHeader>Please confirm</DialogHeader>
-                <DialogContent>You are going to delete "{wishToDelete.title}" wish.</DialogContent>
+                <DialogContent>You are going to delete "{wishToDelete ? wishToDelete.title : 'undefined'}" wish.</DialogContent>
                 <DialogActions>
                     <Button type="button" appearance="primary" outlined caption="cancel" 
                         onClick={() => closeDeleteConfirmation()}/>
@@ -37,7 +37,6 @@ class DeleteWishConfirmation extends Component {
                 </DialogActions>
             </DialogScreen>
         );
-        return null
     }
 }
 

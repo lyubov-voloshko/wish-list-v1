@@ -14,12 +14,15 @@ const mapStateToProps = (state) => {
     return {
         wishes: state.firestore.data.wishes,
         isAuth: !state.firebase.auth.isEmpty,
+        wishToGrantId: state.wishList.wishToGrantId,
+        wishToEditId: state.wishList.wishToEditId,
+        wishToDeleteId: state.wishList.wishToDeleteId,
     }
 }
 
 class CardsSet extends Component {
     render() {
-        const  { wishes, isAuth } = this.props;
+        const  { wishes, isAuth, wishToEditId, wishToGrantId, wishToDeleteId } = this.props;
         return (
             <React.Fragment>
                 <ul className="wishList">
@@ -31,9 +34,9 @@ class CardsSet extends Component {
                     })}
                 </ul>
 
-                <GrantWish />
-                <EditWish />
-                <DeleteWishConfirmation />
+                {wishToGrantId ? <GrantWish /> : null}
+                {wishToEditId ? <EditWish /> : null}
+                {wishToDeleteId ? <DeleteWishConfirmation /> : null}
             </React.Fragment>
 
         )

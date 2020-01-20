@@ -17,7 +17,10 @@ const WishCard = ({ id, wish, isAuth, openDeleteConfirmation, openEditDialog, op
     return (
         <div className="wishCard">
             {wish.isGranted ? <div id="grantedMark" className="granted">granted</div> : null}
-            <div className="wishImage" role="img" style={{ backgroundImage: `url(${wish.imageURL})` }}></div>
+            <div className="wishImage" role="img" style={{ 
+                backgroundImage: `${wish.imageURL ? `url(${wish.imageURL})` : 'url(http://www.mindbodyheartandsoul.org/wp-content/uploads/2016/12/Interstate-60-Episodes-of-the-Road-1.png)'}`, 
+                filter: `${wish.imageURL ? null : 'saturate(2) grayscale(0.75) brightness(1.5) opacity(0.25)'}`
+            }}></div>
             <div className="wishInfo">
                 <div className="info">
                     <span className="category">{wish.category}</span>

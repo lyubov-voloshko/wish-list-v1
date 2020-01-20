@@ -25,21 +25,24 @@ const mapDispatchToProps = {
 
 class EditWish extends Component {
 
-    state = {
-        title: null,
-        category: null,
-        description: null,
-        imageURL: null
-    };
+    constructor(props){
+        super(props);
+        this.state = {
+            title: '',
+            category: '',
+            description: '',
+            imageURL: ''
+        };
+      }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.wishToEdit) 
-            this.setState({
-                title: nextProps.wishToEdit.title,
-                category: nextProps.wishToEdit.category,
-                description: nextProps.wishToEdit.description,
-                imageURL: nextProps.wishToEdit.imageURL
-            })
+    componentDidMount() {
+        this.setState({
+            title: this.props.wishToEdit.title,
+            category: this.props.wishToEdit.category,
+            description: this.props.wishToEdit.description,
+            imageURL: this.props.wishToEdit.imageURL
+        })
+        
     }
     
     getValue = (e) => {
@@ -54,7 +57,7 @@ class EditWish extends Component {
     }
     render() {
         const  { wishToEditId, wishToEdit, closeEditDialog } = this.props;
-        if (wishToEdit) return (
+        return (
             <DialogScreen onClose={() => closeEditDialog()}>
                 <DialogHeader>Please edit</DialogHeader>
                 <form onSubmit={this.handleSubmit}>
@@ -79,7 +82,6 @@ class EditWish extends Component {
                 </form>
             </DialogScreen>
         );
-        return null
     }
 }
 

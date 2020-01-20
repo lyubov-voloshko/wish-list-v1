@@ -79,8 +79,6 @@ export const closeGrantDialog = () => {
 }
 
 export const grantWish = (id, wish) => {
-    console.log(id);
-    console.log(wish);
     const grantingWish = {...wish, isGranted: true}
     return (dispatch, getState) => {
         store.firestore
