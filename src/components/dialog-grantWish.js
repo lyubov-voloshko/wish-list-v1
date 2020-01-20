@@ -51,10 +51,10 @@ class GrantWish extends Component {
                         <img src="http://dl3.joxi.net/drive/2019/03/15/0007/0703/459455/55/85fc650f04.jpg" />
                         <div class="illustration__frame"></div>        
                     </div>
-                    <h1>
+                    <div class="headerCaption">
                         <span class="highlighted">Congrats!</span>
                         Your wish came true!
-                    </h1>
+                    </div>
                 </DialogHeader>
                 <form onSubmit={this.handleSubmit}>
                     <DialogContent>

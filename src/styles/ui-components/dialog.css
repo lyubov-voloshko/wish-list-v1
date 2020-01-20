@@ -33,10 +33,6 @@
 
 /*** grant wish ***/
 
-header {
-    margin-bottom: 44px;          
-}
-
 .illustration {
     position: relative;
     display: block;
@@ -55,19 +51,19 @@ header {
     width: 100%;
 }
 
-img {
+.illustration img {
     filter: sepia(1) hue-rotate(320deg) opacity(0.75);
     width: 100%;
 }
 
-h1 {
+.headerCaption {
     margin-top: -44px;
     opacity: 0.99;
     margin-left: 108px;
     text-shadow: 0 0 1px #000;
 }
 
-h1 .highlighted {
+.headerCaption .highlighted {
     color: var(--colorSecondary_dark);
     text-shadow: 0 0 5px #fff;
 

@@ -28,7 +28,7 @@ class DeleteWishConfirmation extends Component {
         return (
             <DialogScreen onClose={() => closeDeleteConfirmation()}>
                 <DialogHeader>Please confirm</DialogHeader>
-                <DialogContent>You are going to delete "{wishToDelete ? wishToDelete.title : 'undefined'}" wish.</DialogContent>
+                <DialogContent>You are going to delete "{wishToDelete && wishToDelete.title}" wish.</DialogContent>
                 <DialogActions>
                     <Button type="button" appearance="primary" outlined caption="cancel" 
                         onClick={() => closeDeleteConfirmation()}/>
