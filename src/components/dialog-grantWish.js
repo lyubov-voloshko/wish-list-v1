@@ -59,14 +59,14 @@ class GrantWish extends Component {
                 <form onSubmit={this.handleSubmit}>
                     <DialogContent>
                         <p>Your wish "{wishToGrant.title}" was granted</p>
-                        <select id="grantHelper">
+                        <select id="grantHelper" name="grantHelper" value={this.state.grantHelper} onChange={this.getValue}>
                             <option value="me">by me</option>
                             <option value="by">by</option>
-                            <option value="helper">with the help of</option>
+                            <option value="helper">thanks to</option>
                         </select>
                         <TextBox label="Name" id="grant-person" name="grantPerson" value={this.state.grantPerson} onChange={this.getValue}/>
                         <p>on</p>
-                        <TextBox label="date" id="grant-date" name="grantDate" value={this.state.grantDate} onChange={this.getValue}/>
+                        <TextBox type="date" label="date" id="grant-date" name="grantDate" value={this.state.grantDate} onChange={this.getValue}/>
                     </DialogContent>
                     <DialogActions>
                         <Button type="button" appearance="primary" outlined caption="cancel" 

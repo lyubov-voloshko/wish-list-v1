@@ -1,5 +1,6 @@
 import '../styles/wish-card.css';
 
+import { format, formatDistance } from 'date-fns';
 import { openDeleteConfirmation, openEditDialog, openGrantDialog } from '../store/actions/wish-list';
 
 import Button from '../components/ui-components/button';
@@ -43,8 +44,9 @@ const WishCard = ({ id, wish, isAuth, openDeleteConfirmation, openEditDialog, op
                 {wish.isGranted ? 
                     <div className="gratitude">
                         The wish was granted 
-                        {wish.grantPerson ? <span> {wish.grantHelper} {wish.grantPerson}</span> : null}
-                        {wish.grantDate ? <span> on {wish.grantDate}</span> : null}
+                        { (wish.createdAt && wish.grantDate) ? <span> in { formatDistance(new Date (wish.createdAt.toDate()), new Date(wish.grantDate.toDate())) }</span> : null}
+                        {wish.grantPerson ? <span> {wish.grantHelper === 'helper' ? 'thanks to' : wish.grantHelper} {wish.grantPerson}</span> : null}
+                        {wish.grantDate ? <span> on {wish.grantDate && format(wish.grantDate.toDate(), 'PPP')}</span> : null}
                     </div> : null    
                 }
             </div>

@@ -3,13 +3,14 @@ import { store } from '../../../src/index';
 export const createWish = (wish) => {
     return (dispatch, getState) => {
         //const firestore = getFirestore();
+        console.log(wish);
         store.firestore
-            .add({collection: 'wishes'}, { ...wish, isGranted: false })
+            .add({collection: 'wishes'}, { ...wish, isGranted: false, createdAt: new Date() })
             .then(() => {
-                dispatch({ type: 'WISH_ADD', wish })                
+                dispatch({ type: 'WISH_ADD', wish })              
             })
             .catch((error) => {
-                dispatch({ type: 'GENERAL_ERROR', error })                                
+                dispatch({ type: 'GENERAL_ERROR', error })                             
             });
     }
 }
@@ -79,10 +80,14 @@ export const closeGrantDialog = () => {
 }
 
 export const grantWish = (id, wish) => {
-    const grantingWish = {...wish, isGranted: true}
+    const grantedDetails = {
+        ...wish, 
+        isGranted: true, 
+        grantDate: wish.grantDate ? new Date(wish.grantDate) : null
+    }
     return (dispatch, getState) => {
         store.firestore
-            .update({collection: 'wishes', doc: id}, grantingWish)
+            .update({collection: 'wishes', doc: id}, grantedDetails)
             .then(() => {
                 dispatch({ type: 'WISH_GRANT_CLOSE' })
             })

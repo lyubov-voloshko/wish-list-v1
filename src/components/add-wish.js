@@ -14,7 +14,7 @@ const mapDispatchToProps = {
 class AddWish extends Component {
     state = {
         title: '',
-        category: '',
+        category: 'book',
         description: '',
         imageURL: ''
     }
