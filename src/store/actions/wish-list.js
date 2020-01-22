@@ -1,17 +1,13 @@
 import { store } from '../../../src/index';
 
 export const createWish = (wish) => {
-    return (dispatch, getState) => {
-        //const firestore = getFirestore();
-        console.log(wish);
-        store.firestore
-            .add({collection: 'wishes'}, { ...wish, isGranted: false, createdAt: new Date() })
-            .then(() => {
-                dispatch({ type: 'WISH_ADD', wish })              
-            })
-            .catch((error) => {
-                dispatch({ type: 'GENERAL_ERROR', error })                             
-            });
+    return async (dispatch, getState) => {
+        try {
+            await store.firestore.add({collection: 'wishes'}, { ...wish, isGranted: false, createdAt: new Date() });
+            dispatch(showSuccessSnackbar('The wish was added to the list!'));
+        } catch(error) {
+            dispatch({ type: 'GENERAL_ERROR', message: error.message })
+        }
     }
 }
 
@@ -28,16 +24,15 @@ export const closeDeleteConfirmation = () => {
 }
 
 export const deleteWish = (id) => {
-    return (dispatch, getState) => {
-        store.firestore
-            .delete({collection: 'wishes', doc: id})
-            .then(() => {
-                dispatch({ type: 'WISH_CONFIRM_DELETED_CLOSE' })
-            })
-            .catch((error) => {
-                console.log(error.message);
-                dispatch({ type: 'GENERAL_ERROR', error })                                
-            });
+    return async (dispatch, getState) => {
+        try {
+            await store.firestore.delete({collection: 'wishes', doc: id});
+            dispatch({ type: 'WISH_CONFIRM_DELETED_CLOSE' })
+            dispatch(showSuccessSnackbar('The wish was removed from the list!'));
+        } catch(error) {
+            console.log(error.message);
+            dispatch({ type: 'GENERAL_ERROR', error })
+        }
     }
 }
 
@@ -54,16 +49,15 @@ export const closeEditDialog = () => {
 }
 
 export const editWish = (id, wish) => {
-    return (dispatch, getState) => {
-        store.firestore
-            .update({collection: 'wishes', doc: id}, wish)
-            .then(() => {
-                dispatch({ type: 'WISH_EDIT_CLOSE' })
-            })
-            .catch((error) => {
-                console.log(error.message);
-                dispatch({ type: 'GENERAL_ERROR', error })                                
-            });
+    return async (dispatch, getState) => {
+        try {
+            await store.firestore.update({collection: 'wishes', doc: id}, wish);
+            dispatch({ type: 'WISH_EDIT_CLOSE' })
+            dispatch(showSuccessSnackbar('The wish was edited!'));
+        } catch(error) {
+            console.log(error.message);
+            dispatch({ type: 'GENERAL_ERROR', error })                                
+        }
     }
 }
 
@@ -85,15 +79,29 @@ export const grantWish = (id, wish) => {
         isGranted: true, 
         grantDate: wish.grantDate ? new Date(wish.grantDate) : null
     }
-    return (dispatch, getState) => {
-        store.firestore
-            .update({collection: 'wishes', doc: id}, grantedDetails)
-            .then(() => {
-                dispatch({ type: 'WISH_GRANT_CLOSE' })
-            })
-            .catch((error) => {
-                console.log(error.message);
-                dispatch({ type: 'GENERAL_ERROR', error })                                
-            });
+    return async (dispatch, getState) => {
+        try {
+            await store.firestore.update({collection: 'wishes', doc: id}, grantedDetails);
+            dispatch({ type: 'WISH_GRANT_CLOSE' })
+            dispatch(showSuccessSnackbar('The wish was granted!'));
+        } catch(error) {
+            console.log(error.message);
+            dispatch({ type: 'GENERAL_ERROR', error })                                
+        }
+    }
+}
+
+const showSuccessSnackbar = (message) => {
+    return (dispatch) => {
+        dispatch({ type: 'GENERAL_SUCCESS', message })
+        setTimeout(function(){ 
+            dispatch({ type: 'GENERAL_SUCCESS_CLOSE'})
+        }, 5000);
+    }
+}
+
+export const closeErrorSnackbar = () => {
+    return (dispatch) => {
+        dispatch({ type: 'GENERAL_ERROR_CLOSE' })
     }
 }

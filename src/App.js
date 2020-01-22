@@ -9,6 +9,7 @@ import Button from './components/ui-components/button';
 import CardsSet from './components/cards-set';
 import LoginPage from './components/login-page';
 import React from 'react';
+import Snackbar from './components/ui-components/snackbar';
 import Tabs from './components/tabs';
 import { isLoaded } from 'react-redux-firebase'
 import logo from './logo.svg';
@@ -38,6 +39,7 @@ function App(props) {
   return (
     <BrowserRouter>
       <AuthIsLoaded>
+        <Snackbar />
         <div className="App">
           <header className="header">
             <h1 className="header__projectName">Wish List</h1>          

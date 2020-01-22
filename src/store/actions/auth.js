@@ -18,7 +18,7 @@ export const signOut = () => {
         return getFirebase()
             .auth().signOut()
             .then(() => {
-                dispatch({ type:  'SIGNOUT_SUCCESS'})
+                dispatch({ type: 'SIGNOUT_SUCCESS'})
             })
             .catch((error) => {
                 dispatch({ type: 'GENERAL_ERROR', error })
