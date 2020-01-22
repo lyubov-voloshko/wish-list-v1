@@ -8,7 +8,8 @@ import { signIn } from '../store/actions/auth';
 
 const mapStateToProps = (state) => {
     return {
-        isAuth: !state.firebase.auth.isEmpty
+        isAuth: !state.firebase.auth.isEmpty,
+        authError: state.auth.authError
     }
 }
 
@@ -32,12 +33,13 @@ class LoginPage extends Component {
         this.props.signIn(this.state);
     }
     render() {
-        const { isAuth } = this.props;
+        const { isAuth, authError } = this.props;
 
         if (isAuth) return <Redirect to="/" />
         
         return (
             <form className="loginFrom" onSubmit={(e) => this.handleSubmit(e)}>
+                {authError ? <span>{authError}</span> : null}
                 <TextBox type="email" label="Email" id="email" value={this.state.email} onChange={this.getValue}/>
                 <TextBox type="password" label="Password" id="password" value={this.state.password} onChange={this.getValue}/>
                 <Button appearance="primary" caption="log in"/>                

@@ -49,9 +49,9 @@ function App(props) {
             <React.Fragment>
               <Button type="button" appearance="secondary" caption="logout" onClick={props.signOut}/>                
               <AddWish />
+              <Tabs />          
             </React.Fragment> : null
           }
-          <Tabs />          
           <Switch>
             <Route exact path="/" component={ CardsSet } />
             <Route path="/about" component={ AboutMe } />

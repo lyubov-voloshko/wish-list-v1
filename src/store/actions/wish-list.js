@@ -31,7 +31,7 @@ export const deleteWish = (id) => {
             dispatch(showSuccessSnackbar('The wish was removed from the list!'));
         } catch(error) {
             console.log(error.message);
-            dispatch({ type: 'GENERAL_ERROR', error })
+            dispatch({ type: 'GENERAL_ERROR', message: error.message })
         }
     }
 }
@@ -56,7 +56,7 @@ export const editWish = (id, wish) => {
             dispatch(showSuccessSnackbar('The wish was edited!'));
         } catch(error) {
             console.log(error.message);
-            dispatch({ type: 'GENERAL_ERROR', error })                                
+            dispatch({ type: 'GENERAL_ERROR', message: error.message })                                
         }
     }
 }
@@ -86,7 +86,7 @@ export const grantWish = (id, wish) => {
             dispatch(showSuccessSnackbar('The wish was granted!'));
         } catch(error) {
             console.log(error.message);
-            dispatch({ type: 'GENERAL_ERROR', error })                                
+            dispatch({ type: 'GENERAL_ERROR', message: error.message })                                
         }
     }
 }
