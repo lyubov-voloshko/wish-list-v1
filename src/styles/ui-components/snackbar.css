@@ -10,14 +10,16 @@
 }
 
 .snackbar_success {
-    background: bisque;
-    border: 1px solid limegreen;
+    background: honeydew;
+    border: 1px solid ForestGreen;
+    color: ForestGreen;
 }
 
 .snackbar_error {
-    background:bisque;
+    background: mistyrose;
     border: 1px solid darkred;
     color: darkred;
+    top: 60px;
 }
 
 .snackbar__message {

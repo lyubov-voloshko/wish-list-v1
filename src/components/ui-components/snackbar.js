@@ -21,9 +21,9 @@ class Snackbar extends Component {
         const  { error, success, closeErrorSnackbar } = this.props;
         const message = error || success;
         if (message) return (
-            <div class="snackbar snackbar_error">
-                <span class="snackbar__message">{ message }</span>
-                { !error ? <button class="snackbar__action" onClose={() => closeErrorSnackbar()}>&#xd7;</button> : null} 
+            <div className={`snackbar snackbar_${error ? 'error' : 'success'}`}>
+                <span className="snackbar__message">{ message }</span>
+                { !error ? <button className="snackbar__action" onClick={() => closeErrorSnackbar()}>&#xd7;</button> : null} 
             </div>
         );
         return null;

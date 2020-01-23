@@ -23,7 +23,7 @@ const generalReducer = (state = initState, action) => {
         case 'GENERAL_ERROR_CLOSE': {
             return {
                 ...state,
-                successMessage: null
+                errorMessage: null
             }
         }
     }

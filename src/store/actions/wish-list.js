@@ -94,9 +94,9 @@ export const grantWish = (id, wish) => {
 const showSuccessSnackbar = (message) => {
     return (dispatch) => {
         dispatch({ type: 'GENERAL_SUCCESS', message })
-        setTimeout(function(){ 
+        /*setTimeout(function(){ 
             dispatch({ type: 'GENERAL_SUCCESS_CLOSE'})
-        }, 5000);
+        }, 5000);*/
     }
 }
 
