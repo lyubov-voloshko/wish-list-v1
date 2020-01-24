@@ -20,9 +20,11 @@ const mapStateToProps = (state) => {
     }
 }
 
+
 class CardsSet extends Component {
     render() {
-        const  { wishes, isAuth, wishToEditId, wishToGrantId, wishToDeleteId } = this.props;
+        const  { isAuth, wishes, wishToEditId, wishToGrantId, wishToDeleteId } = this.props;
+        
         return (
             <React.Fragment>
                 <ul className="wishList">

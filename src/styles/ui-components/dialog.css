@@ -24,19 +24,15 @@
     background: white;
     border-radius: 8px;
     padding: 20px 24px;
-    width: 420px;
 }
 
 .dialogHeader {
-    margin-bottom: 36px;
+    
 }
-
-/*** grant wish ***/
 
 .illustration {
     position: relative;
     display: block;
-    width: 224px;
 }
 
 .illustration__frame {
@@ -47,8 +43,9 @@
         linear-gradient(360deg, white, transparent 25%),
         linear-gradient(90deg, white, transparent 25%);
     margin-top: -1px;
+    margin-left: -1px;
     height: 100%;
-    width: 100%;
+    width: 101%;
 }
 
 .illustration img {
@@ -59,12 +56,74 @@
 .headerCaption {
     margin-top: -44px;
     opacity: 0.99;
-    margin-left: 108px;
     text-shadow: 0 0 1px #000;
 }
 
-.headerCaption .highlighted {
+.headerCaption__highlighted {
     color: var(--colorSecondary_dark);
     text-shadow: 0 0 5px #fff;
 
+}
+
+.dialogContent {
+    font-size: 1.15em;
+    padding: 32px 0 28px;
+}
+
+.dialogContent__message {
+    line-height: 1.75em;
+}
+
+.dialogActions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.dialogActions__buttons{
+    display: grid;
+	grid-auto-flow: column;
+	grid-auto-columns: 1fr;
+	grid-gap: 12px;
+}
+
+/*** deletw widh header ***/
+
+.dialogHeaderDelete {
+
+}
+
+.dialogHeaderDelete .illustration {
+    position: relative;
+    display: block;
+    width: 250px;
+}
+
+.dialogHeaderDelete .headerCaption {
+    margin-left: 140px;
+}
+
+/*** grant wish ***/
+
+.dialogHeaderGrant .illustration {
+    position: relative;
+    display: block;
+    width: 292px;
+}
+
+.dialogHeaderGrant .headerCaption {
+    margin-left: 140px;
+}
+
+/*** edit wish ***/
+
+.dialogHeaderEdit {
+
+}
+
+.dialogHeaderEdit .illustration {
+    width: 280px;
+}
+
+.dialogHeaderEdit .headerCaption {
+    margin-left: 162px;
 }

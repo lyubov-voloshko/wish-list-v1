@@ -10,6 +10,9 @@ import { closeEditDialog, editWish } from '../store/actions/wish-list';
 import Button from './ui-components/button';
 import TextBox from './ui-components/text-box';
 import { connect } from 'react-redux';
+import headerImage from '../assets/images/MV5BZTgxMWU0MTItMzdmNC00OTAyLTgxN2ItOWFlYjkyOWEyNTIwXkEyXkFqcGdeQXVyMzE2MzgxNDk@._V1_.jpg';
+import '../styles/dialog-editWish.css';
+import '../styles/ui-components/select.css';
 
 const mapStateToProps = (state) => {
     return {
@@ -59,18 +62,31 @@ class EditWish extends Component {
         const  { wishToEditId, wishToEdit, closeEditDialog } = this.props;
         return (
             <DialogScreen onClose={() => closeEditDialog()}>
-                <DialogHeader>Please edit</DialogHeader>
+                <DialogHeader type="Edit">
+                    <div class="illustration">
+                        <img src={headerImage} />
+                        <div class="illustration__frame"></div>        
+                    </div>
+                    <h1 class="headerCaption">
+                        <span class="headerCaption__highlighted">Specify!</span>
+                        It's important
+                    </h1>
+                </DialogHeader>
                 <form onSubmit={this.handleSubmit}>
-                    <DialogContent>
-                            <TextBox label="Title" id="edit-title" name="title" value={this.state.title} onChange={this.getValue}/>
-                            <select id="edit-category" name="category" value={this.state.category} onChange={this.getValue}>
-                                <option value="book">book</option>
-                                <option value="clothes">clothes</option>
-                                <option value="food">food</option>
-                                <option value="item">item</option>
-                                <option value="job">job</option>
-                                <option value="travelling">travelling</option>
-                            </select>
+                    <DialogContent extraСlass="editForm">
+                            <div className="editForm__topLine"> 
+                                <TextBox label="Title" id="edit-title" name="title" extraСlass="editForm__textBox"
+                                    value={this.state.title} onChange={this.getValue}/>
+                                <select id="edit-category" name="category" className="select"
+                                    value={this.state.category} onChange={this.getValue}>
+                                    <option value="book">book</option>
+                                    <option value="clothes">clothes</option>
+                                    <option value="food">food</option>
+                                    <option value="item">item</option>
+                                    <option value="job">job</option>
+                                    <option value="travelling">travelling</option>
+                                </select>
+                            </div>
                             <TextBox label="Put some description" id="edit-description" name="description" value={this.state.description} onChange={this.getValue}/>
                             <TextBox label="Add image URL" id="edit-imageURL" name="imageURL" value={this.state.imageURL} onChange={this.getValue}/>          
                     </DialogContent>

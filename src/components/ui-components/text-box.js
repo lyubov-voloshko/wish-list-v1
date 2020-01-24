@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 class TextBox extends Component {
     render() {
         return (
-            <div className="textBox">
+            <div className={`textBox ${this.props.extraСlass || ''}`}>
                 <input id={this.props.id} 
                     type={this.props.type}
                     className="textField"

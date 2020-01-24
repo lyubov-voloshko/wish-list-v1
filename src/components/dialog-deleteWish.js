@@ -9,6 +9,7 @@ import { closeDeleteConfirmation, deleteWish } from '../store/actions/wish-list'
 
 import Button from './ui-components/button';
 import { connect } from 'react-redux';
+import headerImage from '../assets/images/still_I60_008_granted.jpg';
 
 const mapStateToProps = (state) => {
     return {
@@ -27,8 +28,22 @@ class DeleteWishConfirmation extends Component {
         const  { wishToDeleteId, wishToDelete, closeDeleteConfirmation, deleteWish } = this.props;
         return (
             <DialogScreen onClose={() => closeDeleteConfirmation()}>
-                <DialogHeader>Please confirm</DialogHeader>
-                <DialogContent>You are going to delete "{wishToDelete && wishToDelete.title}" wish.</DialogContent>
+                <DialogHeader type="Delete">
+                    <div class="illustration">
+                        <img src={headerImage} />
+                        <div class="illustration__frame"></div>        
+                    </div>
+                    <h1 class="headerCaption">
+                        <span class="headerCaption__highlighted">Delete?</span>
+                        Are you sure?
+                    </h1>
+                </DialogHeader>
+                <DialogContent>
+                    <p class="dialogContent__message">
+                        You are going to delete "{wishToDelete && wishToDelete.title}" wish.<br/>
+                        It will be deleted for good.
+                    </p>
+                </DialogContent>
                 <DialogActions>
                     <Button type="button" appearance="primary" outlined caption="cancel" 
                         onClick={() => closeDeleteConfirmation()}/>

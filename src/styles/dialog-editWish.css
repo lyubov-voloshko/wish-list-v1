@@ -1,0 +1,9 @@
+.editForm {
+    display: grid;
+    grid-gap: 16px;
+}
+
+.editForm__textBox {
+    flex-grow: 1;
+    margin-right: 10px;
+}

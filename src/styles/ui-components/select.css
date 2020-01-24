@@ -1,0 +1,18 @@
+.select {
+    border: none;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px
+    rgba(0,0,0,0.25);
+    box-sizing: border-box;
+    font-size: 16px;
+    padding: 7px 12px 7px;
+    transition: box-shadow var(--transition-speed);
+}
+
+.selectOption {
+    background: #fff;
+}
+
+.select .selectOption:checked {
+    color: var(--colorPrimary_dark);
+}

@@ -1,0 +1,16 @@
+.grantForm {
+    display: grid;
+    grid-gap: 16px;
+}
+
+.editForm__topLine {
+    display: flex;
+}
+
+.grantForm__textBox {
+    margin: 0 10px;
+}
+
+.grantForm__select {
+    width: 115px;
+}

@@ -1,6 +1,6 @@
 .textBox {
     position: relative;
-    width: 100%;
+    display: inline-block;
 }
 
 .textField {

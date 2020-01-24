@@ -2,17 +2,17 @@ import '../../styles/ui-components/dialog.css';
 
 import React from 'react';
 
-export const DialogHeader = ({ children }) => {
+export const DialogHeader = ({ type, children }) => {
     return (
-        <div className="dialogHeader">
+        <div className={`dialogHeader dialogHeader${type}`}>
             {children}
         </div>
     )
 }
 
-export const DialogContent = ({ children }) => {
+export const DialogContent = ({ extraСlass, children }) => {
     return (
-        <div className="dialogContent">
+        <div className={`dialogContent ${extraСlass || ''}`}>
             {children}
         </div>
     )
@@ -21,7 +21,9 @@ export const DialogContent = ({ children }) => {
 export const DialogActions = ({ children }) => {
     return (
         <div className="dialogActions">
-            {children}
+            <div className="dialogActions__buttons">
+                {children}
+            </div>
         </div>
     )
 }
