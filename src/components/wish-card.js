@@ -46,6 +46,7 @@ const WishCard = ({ id, wish, isAuth, openDeleteConfirmation, openEditDialog, op
                         The wish was granted 
                         { (wish.createdAt && wish.grantDate) ? <span> in { formatDistance(new Date (wish.createdAt.toDate()), new Date(wish.grantDate.toDate())) }</span> : null}
                         {wish.grantPerson ? <span> {wish.grantHelper === 'helper' ? 'thanks to' : wish.grantHelper} {wish.grantPerson}</span> : null}
+                        {wish. grantOccasion ? <span> on {wish. grantOccasion}</span> : null}
                         {wish.grantDate ? <span> on {wish.grantDate && format(wish.grantDate.toDate(), 'PPP')}</span> : null}
                     </div> : null    
                 }

@@ -23,7 +23,7 @@ class Snackbar extends Component {
         if (message) return (
             <div className={`snackbar snackbar_${error ? 'error' : 'success'}`}>
                 <span className="snackbar__message">{ message }</span>
-                { !error ? <button className="snackbar__action" onClick={() => closeErrorSnackbar()}>&#xd7;</button> : null} 
+                { error ? <button className="snackbar__action" onClick={() => closeErrorSnackbar()}>&#xd7;</button> : null} 
             </div>
         );
         return null;

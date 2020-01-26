@@ -72,8 +72,8 @@ class GrantWish extends Component {
                                 <TextBox label="Name" id="grant-person" name="grantPerson" extraСlass="grantForm__textBox"
                                     value={this.state.grantPerson} onChange={this.getValue}/> : null}
                         </div>
-                        <div>on the occasion of <TextBox type="text" label="occasion" id="grant-date" name="grantDate" extraСlass="grantForm__textBox"
-                            value={this.state.grantDate} onChange={this.getValue}/>
+                        <div>on the occasion of <TextBox type="text" label="occasion" id="grant-occasion" name="grantOccasion" extraСlass="grantForm__textBox"
+                            value={this.state.grantOccasion} onChange={this.getValue}/>
                         on 
                         <TextBox type="date" label="date" id="grant-date" name="grantDate" extraСlass="grantForm__textBox"
                             value={this.state.grantDate} onChange={this.getValue}/>
