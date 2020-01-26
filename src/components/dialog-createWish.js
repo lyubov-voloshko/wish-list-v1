@@ -5,47 +5,27 @@ import {
     DialogScreen,
 } from './ui-components/dialog';
 import React, { Component } from 'react';
-import { closeEditDialog, editWish } from '../store/actions/wish-list';
+import { closeCreateDialog, createWish } from '../store/actions/wish-list';
 
 import Button from './ui-components/button';
 import TextBox from './ui-components/text-box';
 import { connect } from 'react-redux';
-import headerImage from '../assets/images/edit.jpg';
+import headerImage from '../assets/images/add.jpg';
 import '../styles/dialog-editWish.css';
 import '../styles/ui-components/select.css';
 
-const mapStateToProps = (state) => {
-    return {
-        wishToEditId: state.wishList.wishToEditId,
-        wishToEdit: state.firestore.data.wishes ? state.firestore.data.wishes[state.wishList.wishToEditId] : null
-    }
-}
-
 const mapDispatchToProps = {
-    closeEditDialog,
-    editWish
+    closeCreateDialog,
+    createWish
 }
 
-class EditWish extends Component {
+class CreateWish extends Component {
 
-    constructor(props){
-        super(props);
-        this.state = {
-            title: '',
-            category: '',
-            description: '',
-            imageURL: ''
-        };
-      }
-
-    componentDidMount() {
-        this.setState({
-            title: this.props.wishToEdit.title,
-            category: this.props.wishToEdit.category,
-            description: this.props.wishToEdit.description,
-            imageURL: this.props.wishToEdit.imageURL
-        })
-        
+    state = {
+        title: '',
+        category: 'book',
+        description: '',
+        imageURL: ''
     }
     
     getValue = (e) => {
@@ -56,20 +36,21 @@ class EditWish extends Component {
     
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.editWish(this.props.wishToEditId, this.state);
+        this.props.createWish(this.state);
     }
+
     render() {
-        const  { wishToEditId, wishToEdit, closeEditDialog } = this.props;
+        const  { closeCreateDialog } = this.props;
         return (
-            <DialogScreen onClose={() => closeEditDialog()}>
-                <DialogHeader type="Edit">
+            <DialogScreen onClose={() => closeCreateDialog()}>
+                <DialogHeader type="Create">
                     <div class="illustration">
                         <img src={headerImage} />
                         <div class="illustration__frame"></div>        
                     </div>
                     <h1 class="headerCaption">
-                        <span class="headerCaption__highlighted">Specify!</span>
-                        It's important
+                        <span class="headerCaption__highlighted">Make a wish!</span>
+                        &nbsp;carefully
                     </h1>
                 </DialogHeader>
                 <form onSubmit={this.handleSubmit}>
@@ -92,8 +73,8 @@ class EditWish extends Component {
                     </DialogContent>
                     <DialogActions>
                         <Button type="button" appearance="primary" outlined caption="cancel" 
-                            onClick={() => closeEditDialog()}/>
-                        <Button type="submit" appearance="primary" caption="edit" />
+                            onClick={() => closeCreateDialog()}/>
+                        <Button type="submit" appearance="primary" caption="make a wish" />
                     </DialogActions>
                 </form>
             </DialogScreen>
@@ -101,4 +82,4 @@ class EditWish extends Component {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditWish);
+export default connect(null, mapDispatchToProps)(CreateWish);

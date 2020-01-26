@@ -7,7 +7,6 @@ class AboutMe extends Component {
         return (
             <div>
                 The page about me
-                <TextBox label="Name" />
             </div>
         )
     }

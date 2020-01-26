@@ -1,9 +1,22 @@
 import { store } from '../../../src/index';
 
+export const openCreateDialog = () => {
+    return (dispatch) => {
+        dispatch({ type: 'WISH_CREATE_OPEN' })
+    }
+}
+
+export const closeCreateDialog = () => {
+    return (dispatch) => {
+        dispatch({ type: 'WISH_CREATE_CLOSE' })
+    }
+}
+
 export const createWish = (wish) => {
     return async (dispatch, getState) => {
         try {
             await store.firestore.add({collection: 'wishes'}, { ...wish, isGranted: false, createdAt: new Date() });
+            dispatch({ type: 'WISH_CREATE_CLOSE' })
             dispatch(showSuccessSnackbar('The wish was added to the list!'));
         } catch(error) {
             dispatch({ type: 'GENERAL_ERROR', message: error.message })
@@ -94,9 +107,9 @@ export const grantWish = (id, wish) => {
 const showSuccessSnackbar = (message) => {
     return (dispatch) => {
         dispatch({ type: 'GENERAL_SUCCESS', message })
-        /*setTimeout(function(){ 
+        setTimeout(function(){ 
             dispatch({ type: 'GENERAL_SUCCESS_CLOSE'})
-        }, 5000);*/
+        }, 4000);
     }
 }
 

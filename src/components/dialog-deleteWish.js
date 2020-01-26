@@ -9,7 +9,7 @@ import { closeDeleteConfirmation, deleteWish } from '../store/actions/wish-list'
 
 import Button from './ui-components/button';
 import { connect } from 'react-redux';
-import headerImage from '../assets/images/still_I60_008_granted.jpg';
+import headerImage from '../assets/images/delete.jpg';
 
 const mapStateToProps = (state) => {
     return {

@@ -36,7 +36,7 @@
 .loginFrom {
   display: grid;
   grid-gap: 24px;
-  margin: 0 auto;
+  margin: 40px auto;
   max-width: 450px;
   min-width: 300px;
   width: 90%;

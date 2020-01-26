@@ -10,7 +10,7 @@ import { closeGrantDialog, grantWish } from '../store/actions/wish-list';
 import Button from './ui-components/button';
 import TextBox from './ui-components/text-box';
 import { connect } from 'react-redux';
-import headerImage from '../assets/images/85fc650f04.jpg';
+import headerImage from '../assets/images/grant.jpg';
 import '../styles/dialog-grantWish.css';
 import '../styles/ui-components/select.css';
 

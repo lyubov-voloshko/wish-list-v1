@@ -86,6 +86,20 @@
 	grid-gap: 12px;
 }
 
+/*** create wish ***/
+
+.dialogHeaderCreate {
+
+}
+
+.dialogHeaderCreate .illustration {
+    width: 320px;
+}
+
+.dialogHeaderCreate .headerCaption {
+    margin-left: 120px;
+}
+
 /*** deletw widh header ***/
 
 .dialogHeaderDelete {
@@ -121,9 +135,9 @@
 }
 
 .dialogHeaderEdit .illustration {
-    width: 280px;
+    width: 22vw;
 }
 
 .dialogHeaderEdit .headerCaption {
-    margin-left: 162px;
+    margin-left: 200px;
 }

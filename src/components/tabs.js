@@ -1,25 +1,25 @@
 import '../styles/tabs.css';
 
-import { Link } from 'react-router-dom'
-import React from 'react';
+import { Link, withRouter } from 'react-router-dom'
+import React, { Component } from 'react';
 
-const Tabs = () => {
-    return (
-        <ul className="tabs">
+class Tabs extends Component {    
+    render() {
+        const currentLocation = this.props.location.pathname;
+        return <ul className="tabs">
             <li className="tab">
-                <Link to="/" className="tabLink">All</Link>
+                <Link to="/" className={`tabLink ${currentLocation === '/' ? 'tabLink_active' : null}`}>All</Link>
             </li>
             <li className="tab">
-                <Link to="/current" className="tabLink">Current</Link>
+                <Link to="/current" className={`tabLink ${currentLocation === '/current' ? 'tabLink_active' : null}`}>Current</Link>
             </li>
             <li className="tab">
-                <Link to="/granted" className="tabLink">Granted</Link>
+                <Link to="/granted" className={`tabLink ${currentLocation === '/granted' ? 'tabLink_active' : null}`}>Granted</Link>
             </li>
             <li className="tab">
-                <Link to="/about" className="tabLink">About me</Link>
+                <Link to="/about" className={`tabLink ${currentLocation === '/about' ? 'tabLink_active' : null}`}>About me</Link>
             </li>
         </ul>
-    )
+    }
 }
-
-export default Tabs;
+export default withRouter(Tabs);

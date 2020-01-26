@@ -11,7 +11,7 @@ const mapDispatchToProps = {
     createWish
 }
 
-class AddWish extends Component {
+class CreateWish extends Component {
     state = {
         title: '',
         category: 'book',
@@ -49,4 +49,4 @@ class AddWish extends Component {
     }
 }
 
-export default connect(null, mapDispatchToProps)(AddWish);
+export default connect(null, mapDispatchToProps)(CreateWish);

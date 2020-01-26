@@ -7,6 +7,7 @@ import Button from '../components/ui-components/button';
 import { Link } from 'react-router-dom'
 import React from 'react';
 import { connect } from 'react-redux';
+import { defaultImage } from '../assets/images/default.jpg';
 
 const mapDispatchToProps = {
     openDeleteConfirmation,
@@ -19,7 +20,7 @@ const WishCard = ({ id, wish, isAuth, openDeleteConfirmation, openEditDialog, op
         <div className="wishCard">
             {wish.isGranted ? <div id="grantedMark" className="granted">granted</div> : null}
             <div className="wishImage" role="img" style={{ 
-                backgroundImage: `${wish.imageURL ? `url(${wish.imageURL})` : 'url(http://www.mindbodyheartandsoul.org/wp-content/uploads/2016/12/Interstate-60-Episodes-of-the-Road-1.png)'}`, 
+                backgroundImage: `${wish.imageURL ? `url(${wish.imageURL})` : 'linear-gradient(var(--colorSecondary_dark), var(--colorPrimary_dark))' }`,
                 filter: `${wish.imageURL ? null : 'saturate(2) grayscale(0.75) brightness(1.5) opacity(0.25)'}`
             }}></div>
             <div className="wishInfo">

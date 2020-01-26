@@ -8,11 +8,13 @@ import AddWish from './components/add-wish';
 import Button from './components/ui-components/button';
 import CardsSet from './components/cards-set';
 import LoginPage from './components/login-page';
+import MainPage from './components/main-page';
 import React from 'react';
 import Snackbar from './components/ui-components/snackbar';
 import Tabs from './components/tabs';
 import { isLoaded } from 'react-redux-firebase'
 import logo from './logo.svg';
+import { openCreateDialog } from './store/actions/wish-list';
 import { signOut } from './store/actions/auth';
 
 function AuthIsLoaded({ children }) {
@@ -27,34 +29,34 @@ const mapStateToProps = (state) => {
   }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    signOut: () => dispatch(signOut())        
-  }
+const mapDispatchToProps = {
+  openCreateDialog,
+  signOut
 }
 
 function App(props) {
-  const { isAuth } = props;
+  const { isAuth, openCreateDialog, signOut } = props;
   
   return (
     <BrowserRouter>
       <AuthIsLoaded>
         <Snackbar />
         <div className="App">
-          <header className="header">
-            <h1 className="header__projectName">Wish List</h1>          
-          </header>
-          <Route path="/login" component={ LoginPage } />
-          { isAuth ? 
+          {isAuth ? 
             <React.Fragment>
-              <Button type="button" appearance="secondary" caption="logout" onClick={props.signOut}/>                
-              <AddWish />
-              <Tabs />          
-            </React.Fragment> : null
+              <header class="header">
+                <Button appearance="primary" caption="add wish" onClick={() => openCreateDialog()}/>
+                <h1 className="header__projectName">Wish List</h1>          
+                <Button type="button" appearance="secondary" caption="logout" onClick={() => signOut()}/>
+              </header>
+            </React.Fragment> :
+            <header className="header">
+              <h1 className="header__projectName">Wish List</h1>          
+            </header>
           }
           <Switch>
-            <Route exact path="/" component={ CardsSet } />
-            <Route path="/about" component={ AboutMe } />
+            <Route path="/login" component={ LoginPage } />
+            <Route path="/" component={ MainPage } />
           </Switch>
         </div>
       </AuthIsLoaded>

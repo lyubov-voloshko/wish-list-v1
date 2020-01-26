@@ -1,4 +1,5 @@
 const initState = {
+    wishCreateShown: false,
     wishToDeleteId: null,
     wishToEditId: null,
     wishToGrantId: null
@@ -6,6 +7,16 @@ const initState = {
 
 const wishListReducer = (state = initState, action) => {
     switch(action.type) {
+        case 'WISH_CREATE_OPEN':
+            return {
+                ...state,
+                wishCreateShown: true
+            }
+        case 'WISH_CREATE_CLOSE':
+            return {
+                ...state,
+                wishCreateShown: false
+            }
         case 'WISH_CONFIRM_DELETED_OPEN':
             return {
                 ...state,
