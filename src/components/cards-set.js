@@ -1,4 +1,5 @@
 import '../styles/cards-set.css';
+import '../styles/ui-components/pagination.css';
 
 import React, { Component } from 'react';
 
@@ -6,15 +7,15 @@ import CreateWish from './dialog-createWish'
 import DeleteWishConfirmation from './dialog-deleteWish';
 import EditWish from './dialog-editWish';
 import GrantWish from './dialog-grantWish';
-import Tabs from './tabs';
 import WishCard from './wish-card';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
+import { openNextPage } from '../store/actions/wish-list';
 
 const mapStateToProps = (state) => {
     return {
-        wishes: state.firestore.data.wishes,
+        wishes: state.firestore.ordered.wishes,
         isAuth: !state.firebase.auth.isEmpty,
         wishCreateShown: state.wishList.wishCreateShown,
         wishToGrantId: state.wishList.wishToGrantId,
@@ -23,29 +24,39 @@ const mapStateToProps = (state) => {
     }
 }
 
+const mapDispatchToProps = {
+    openNextPage
+}
+
+const cardsPerPage = 4;
+
 
 class CardsSet extends Component {
     render() {
-        const  { isAuth, wishes, wishCreateShown, wishToEditId, wishToGrantId, wishToDeleteId } = this.props;
+        const  { isAuth, wishes, openNextPage, wishCreateShown, wishToEditId, wishToGrantId, wishToDeleteId } = this.props;
         
-        return (
+        if (wishes) return (
             <React.Fragment> 
+                <div className="pagination">
+                    <button>Prev</button>
+                    <span>{  Object.entries(wishes).length  }</span>
+                    <button onClick={() => openNextPage(wishes[2])}>Next</button>
+                </div>
                 <ul className="wishList">
-                    { wishes && Object.entries(wishes).map( ([key, wish]) => {
-                        if (wish) return <li className="wishList__item" key={key}>
-                            <WishCard id={key} wish={wish} isAuth={isAuth} />
-
+                { wishes && wishes.map( (wish) => {
+                        if (wish) return <li className="wishList__item" key={wish.id}>
+                            <WishCard id={wish.id} wish={wish} isAuth={isAuth} />
                         </li>
                     })}
                 </ul>
-
+                
                 {wishCreateShown ? <CreateWish /> : null}
                 {wishToGrantId ? <GrantWish /> : null}
                 {wishToEditId ? <EditWish /> : null}
                 {wishToDeleteId ? <DeleteWishConfirmation /> : null}
             </React.Fragment>
-
         )
+        return null;
     }
 }
 
@@ -57,17 +68,20 @@ export default compose(
                     collection: 'wishes',
                     where: [
                         ['isGranted', '==', props.isGranted]
-                    ],
+                    ]
                 }
             ]
         } else {
             return [
                 {
                     collection: 'wishes',
+                    orderBy:'title',
+                    startAfter: props.lastVisible,
+                    limit: 4
                 }
             ]
         }
         
     }),
-    connect(mapStateToProps)
+    connect(mapStateToProps, mapDispatchToProps)
 )(CardsSet)

@@ -2,7 +2,8 @@ const initState = {
     wishCreateShown: false,
     wishToDeleteId: null,
     wishToEditId: null,
-    wishToGrantId: null
+    wishToGrantId: null,
+    currentPageWishes: null
 }
 
 const wishListReducer = (state = initState, action) => {
@@ -46,6 +47,11 @@ const wishListReducer = (state = initState, action) => {
             return {
                 ...state,
                 wishToGrantId: null
+            }
+        case 'WISHES_SHOW_NEXT':
+            return {
+                ...state,
+                currentPageWishes: action.nextItems
             }
     }
     return state;

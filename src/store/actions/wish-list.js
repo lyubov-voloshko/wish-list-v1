@@ -118,3 +118,20 @@ export const closeErrorSnackbar = () => {
         dispatch({ type: 'GENERAL_ERROR_CLOSE' })
     }
 }
+
+/*** pagination ***/
+
+export const openNextPage = (lastVisible) => {
+    return async (dispatch, getState) => {
+        try {
+            console.log(lastVisible.id);
+            const nexItems = await store.firestore.get({ collection: 'wishes', orderBy:'title', startAt: lastVisible.id, limit: 8 });
+            console.log(nexItems.docs.length);
+            console.log(nexItems.docs.map(doc => doc.data()));
+            dispatch({ type: 'WISHES_SHOW_NEXT', nexItems })
+            /*dispatch(showSuccessSnackbar('The wish was added to the list!'));*/
+        } catch(error) {
+            dispatch({ type: 'GENERAL_ERROR', message: error.message })
+        }
+    }
+}

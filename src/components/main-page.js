@@ -15,6 +15,12 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 
+const mapStateToProps = (state) => {
+    return {
+        wishes: state.firestore.ordered.wishes,
+    }
+}
+
 class MainPage extends Component {
     render() {
         const  { isAuth, wishes, wishCreateShown, wishToEditId, wishToGrantId, wishToDeleteId } = this.props;
@@ -23,7 +29,7 @@ class MainPage extends Component {
             <React.Fragment>
                 <Tabs />          
                 <Switch>
-                    <Route exact path="/" component={ CardsSet } />
+                    <Route exact path="/"><CardsSet lastVisible={wishes && wishes[wishes.lendth - 1]} /></Route>
                     <Route exact path="/current"><CardsSet isGranted={false} /></Route>
                     <Route exact path="/granted"><CardsSet isGranted={true} /></Route>
                     <Route path="/about" component={ AboutMe } />
@@ -34,4 +40,4 @@ class MainPage extends Component {
     }
 }
 
-export default (MainPage)
+export default connect(mapStateToProps)(MainPage);
