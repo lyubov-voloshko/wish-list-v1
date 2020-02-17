@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect, useSelector } from 'react-redux';
 
 import AboutMe from './components/about-me';
-import AddWish from './components/add-wish';
 import Button from './components/ui-components/button';
 import CardsSet from './components/cards-set';
 import LoginPage from './components/login-page';

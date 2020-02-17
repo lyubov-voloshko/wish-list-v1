@@ -64,7 +64,7 @@ export const closeEditDialog = () => {
 export const editWish = (id, wish) => {
     return async (dispatch, getState) => {
         try {
-            await store.firestore.update({collection: 'wishes', doc: id}, wish);
+            await store.firestore.update({collection: 'wishes', doc: id}, {...wish, id: id});
             dispatch({ type: 'WISH_EDIT_CLOSE' })
             dispatch(showSuccessSnackbar('The wish was edited!'));
         } catch(error) {
@@ -94,7 +94,7 @@ export const grantWish = (id, wish) => {
     }
     return async (dispatch, getState) => {
         try {
-            await store.firestore.update({collection: 'wishes', doc: id}, grantedDetails);
+            await store.firestore.update({collection: 'wishes', doc: id}, {...grantedDetails, id: id});
             dispatch({ type: 'WISH_GRANT_CLOSE' })
             dispatch(showSuccessSnackbar('The wish was granted!'));
         } catch(error) {

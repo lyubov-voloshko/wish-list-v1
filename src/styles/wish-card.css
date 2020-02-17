@@ -21,13 +21,17 @@
 }
 
 .wishImage {
-    background-size: cover;
-    background-position: center center;
     border-radius: 8px 0 0 8px;
     height: 100%;
     margin-right: 8px;
     min-width: 50%;
+    object-fit: cover;
+    object-position: center;
     width: 50%;
+}
+
+.wishImage_empty {
+    filter: sepia(1) brightness(0.75) contrast(0.75) opacity(0.5);
 }
 
 .wishInfo {
